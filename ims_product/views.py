@@ -1,6 +1,7 @@
 from django.shortcuts import render
 
 from ims_product.models import Category
+from ims_product.models import Product
 
 
 def category_list(request):
@@ -14,6 +15,10 @@ def category_list(request):
 
 
 def product_list(request):
-    context = {}
+    products = Product.objects.all()
+
+    context = {
+        'products': products,
+    }
 
     return render(request, 'product_list.html', context)
