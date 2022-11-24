@@ -1,8 +1,14 @@
 from django.shortcuts import render
 
+from ims_product.models import Category
+
 
 def category_list(request):
-    context = {}
+    categories = Category.objects.all()
+
+    context = {
+        'categories': categories,
+    }
 
     return render(request, 'category_list.html', context)
 
