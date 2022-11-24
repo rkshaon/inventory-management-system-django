@@ -17,8 +17,8 @@
                     <a class="navbar-brand" href="#">Inventory Management System</a>
                 </div>
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Home</a></li>
-                    <li><a href="#">Category</a></li>
+                    <li class="active"><a href="{% url 'index' %}">Home</a></li>
+                    <li><a href="{% url 'category_list' %}">Category</a></li>
                     <li><a href="#">Product</a></li>
                     <li><a href="#">Purchase</a></li>
                     <li><a href="#">Order</a></li>
@@ -28,10 +28,12 @@
                     <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
                 </ul>
             </div>
-        </nav>
-        {% block content %}
-        
-        {% endblock %}
+        </nav>        
+        <div class="container">
+            {% block content %}
+
+            {% endblock %}
+        </div>
         <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
     </body>
 </html>
