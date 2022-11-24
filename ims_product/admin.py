@@ -1,3 +1,6 @@
 from django.contrib import admin
 
-# Register your models here.
+from ims_product.models import Category
+
+
+admin.site.register(Category)
