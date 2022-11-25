@@ -2,6 +2,7 @@ from django import forms
 
 from ims_product.models import Product
 from ims_user.models import Supplier
+from ims_user.models import Customer
 from ims_inventory.models import Purchase
 from ims_inventory.models import Inventory
 from ims_inventory.models import Sale
@@ -32,7 +33,10 @@ class NewSaleForm(forms.ModelForm):
     inventory = forms.ModelChoiceField(queryset=Inventory.objects.all(), widget=forms.Select(attrs={
         'class': 'form-control',
     }), required=True)
+    customer = forms.ModelChoiceField(queryset=Customer.objects.all(), widget=forms.Select(attrs={
+        'class': 'form-control',
+    }), required=True)
 
     class Meta:
         model = Sale
-        fields = {'quantity', 'inventory'}
+        fields = {'quantity', 'inventory', 'customer'}

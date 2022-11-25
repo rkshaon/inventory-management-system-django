@@ -6,7 +6,7 @@ class Inventory(models.Model):
     quantity = models.FloatField(default=0.0, blank=False, null=False)
 
     def __str__(self):
-        return 'product: ' + str(self.product.name) + ' quantity: ' + str(self.quantity)
+        return str(self.product.name) + ' - in stoke ' + str(self.quantity) + ' quantity'
 
 
 class Purchase(models.Model):
@@ -21,6 +21,7 @@ class Purchase(models.Model):
 class Sale(models.Model):
     inventory = models.ForeignKey(Inventory, on_delete=models.CASCADE)
     quantity = models.FloatField(default=0.0, blank=False, null=False)
+    customer = models.ForeignKey('ims_user.Customer', on_delete=models.CASCADE)
 
     def __str__(self):
         return 'product: ' + str(self.inventory.product.name) + ' quantity: ' + str(self.quantity)

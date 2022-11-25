@@ -6,6 +6,7 @@ from ims_inventory.models import Inventory
 from ims_inventory.models import Purchase
 
 from ims_inventory.forms import NewPurchaseForm
+from ims_inventory.forms import NewSaleForm
 
 
 def purchase_list(request):
@@ -57,3 +58,13 @@ def sale_list(request):
     }
 
     return render(request, 'sale_list.html', context)
+
+
+def sale_add(request):
+    form = NewSaleForm()
+
+    context = {
+        'form': form,
+    }
+
+    return render(request, 'sale_add.html', context)
