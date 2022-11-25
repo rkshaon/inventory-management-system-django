@@ -9,4 +9,48 @@
     <h3>Current customer <i>{{ total_customers }} persons</i>.</h3>
     <h3>Current supplier <i>{{ total_suppliers }} persons</i>.</h3>
 </div>
+<h2>Customer added last 7 days</h2>
+<a class="btn btn-primary" href="{% url 'customer_list' %}">View All Customer (+)</a>
+<table class="table table-condensed">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Address</th>
+            <th>E-mail</th>
+            <th>Cell No</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for customer in customers %}
+        <tr>
+            <td>{{ customer.name }}</td>
+            <td>{{ customer.address }}</td>
+            <td>{{ customer.email }}</td>
+            <td>{{ customer.cell }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<h2>Supplier added last 7 days</h2>
+<a class="btn btn-primary" href="{% url 'supplier_list' %}">View All Supplier (+)</a>
+<table class="table table-condensed">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Address</th>
+            <th>E-mail</th>
+            <th>Cell No</th>
+        </tr>        
+    </thead>
+    <tbody>
+        {% for supplier in suppliers %}
+        <tr>
+            <td>{{ supplier.name }}</td>
+            <td>{{ supplier.address }}</td>
+            <td>{{ supplier.email }}</td>
+            <td>{{ supplier.cell }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
 {% endblock %}

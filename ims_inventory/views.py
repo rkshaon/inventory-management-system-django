@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from django.db.models import Sum
 
+import datetime
+
 from ims_product.models import Category
 from ims_product.models import Product
 from ims_user.models import Supplier
@@ -20,6 +22,8 @@ def index(request):
     total_products = Product.objects.filter(is_deleted=False).count()
     total_customers = Customer.objects.filter(is_deleted=False).count()
     total_suppliers = Supplier.objects.filter(is_deleted=False).count()
+    customers = Customer.objects.filter(is_deleted=False, added_date_time__gte=datetime.datetime.now()-datetime.timedelta(days=7))
+    suppliers = Supplier.objects.filter(is_deleted=False, added_date_time__gte=datetime.datetime.now()-datetime.timedelta(days=7))
 
     context = {
         'inventories': inventories,
@@ -28,6 +32,8 @@ def index(request):
         'total_products': total_products,
         'total_customers': total_customers,
         'total_suppliers': total_suppliers,
+        'customers': customers,
+        'suppliers': suppliers,
     }
     
     return render(request, 'index.html', context)
