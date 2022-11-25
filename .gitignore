@@ -1,5 +1,8 @@
 /env
 
 ims_inventory/migrations/
+ims_inventory/__pycache__
 ims_product/migrations/
+ims_product/__pycache__
 ims_user/migrations/
+ims_user/__pycache__
