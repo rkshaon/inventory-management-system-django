@@ -49,3 +49,13 @@ def customer_list(request):
     }
 
     return render(request, 'customer_list.html', context)
+
+
+def customer_add(request):
+    form = NewCustomerForm()
+
+    context = {
+        'form': form
+    }
+
+    return render(request, 'customer_add.html', context)

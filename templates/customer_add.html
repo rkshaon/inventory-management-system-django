@@ -1,0 +1,28 @@
+{% load static %}
+
+{% include 'base.html' %}
+
+{% block body %}
+<h2>Add Customer</h2>
+<a class="btn btn-primary" href="{% url 'customer_list' %}">Show List</a>
+<form method="post" action="" role="form" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="name">Name</label>
+        {{ form.name }}
+    </div>
+    <div class="form-group">
+        <label for="address">Address</label>
+        {{ form.address }}
+    </div>
+    <div class="form-group">
+        <label for="email">E-mail</label>
+        {{ form.email }}
+    </div>
+    <div class="form-group">
+        <label for="cell">Cell</label>
+        {{ form.cell }}
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{% endblock %}
