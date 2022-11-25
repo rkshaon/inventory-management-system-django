@@ -1,3 +1,5 @@
 from django.contrib import admin
 
-# Register your models here.
+from ims_user.models import Supplier
+
+admin.site.register(Supplier)
