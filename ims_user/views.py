@@ -33,6 +33,10 @@ def user_login(request):
     return render(request, 'login.html', context)
 
 
+def user_logout(request):
+    logout(request)
+    return redirect('login')
+
 @login_required(login_url='login')
 def supplier_list(request):
     suppliers = Supplier.objects.all()

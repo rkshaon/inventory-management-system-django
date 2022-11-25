@@ -23,6 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', inventory_view.index, name='index'),
     path('login', user_view.user_login, name='login'),
+    path('logout', user_view.user_logout, name='logout'),
     path('product/', include('ims_product.urls')),
     path('inventory/', include('ims_inventory.urls')),
     path('user/', include('ims_user.urls')),
