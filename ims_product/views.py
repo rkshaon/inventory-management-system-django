@@ -26,7 +26,7 @@ def category_add(request):
             
             c, created = Category.objects.get_or_create(name=name, image=image)
         
-        return redirect('category_list')
+            return redirect('category_list')
 
     form = NewCategoryForm()
     
