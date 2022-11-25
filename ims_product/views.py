@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.contrib import messages
 
 from ims_product.models import Category
 from ims_product.models import Product
@@ -26,6 +27,8 @@ def category_add(request):
             name = request.POST.get('name')
             
             category = Category.objects.create(name=name, image=image)
+
+            messages.info(request, 'Category added successfully!')
         
             return redirect('category_list')
 

@@ -28,7 +28,16 @@
                     <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
                 </ul>
             </div>
-        </nav>        
+        </nav>
+        {% if messages %}
+        <!-- Error -->
+            {% for message in messages %}
+                <!-- {{message}} -->
+                <div class="alert alert-success" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
         <div class="container">
             {% block content %}
 
