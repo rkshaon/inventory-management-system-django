@@ -21,4 +21,5 @@ urlpatterns = [
     path('', include('ims_home.urls')),
     path('product/', include('ims_product.urls')),
     path('inventory/', include('ims_inventory.urls')),
+    path('user/', include('ims_user.urls')),
 ]
