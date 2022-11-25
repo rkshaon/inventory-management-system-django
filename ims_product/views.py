@@ -49,6 +49,18 @@ def product_list(request):
 
 
 def product_add(request):
+    if request.method == 'POST':
+        form = NewProductForm(request.POST, request.FILES)
+
+        if form.is_valid():
+            name = request.POST.get('name')
+            image = request.FILES.get('image')
+            category = Category.objects.get(id=request.POST.get('category'))
+            
+            p, created = Product.objects.get_or_create(name=name, image=image, category=category)
+
+            return redirect('product_list')
+
     form = NewProductForm()
     
     context = {
