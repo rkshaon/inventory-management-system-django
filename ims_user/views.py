@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from ims_user.models import Supplier
 
@@ -16,6 +16,20 @@ def supplier_list(request):
 
 
 def supplier_add(request):
+    if request.method == 'POST':
+        form = NewSupplierForm(request.POST)
+
+        if form.is_valid():
+            name = request.POST.get('name')
+            address = request.POST.get('address')
+            email = request.POST.get('email')
+            cell = request.POST.get('cell')
+
+            s, created = Supplier.objects.get_or_create(
+                name=name, address=address, email=email, cell=cell)
+            
+            return redirect('supplier_list')
+
     form = NewSupplierForm()
 
     context = {
