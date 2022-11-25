@@ -1,5 +1,9 @@
 from django.shortcuts import render, redirect
 
+from ims_inventory.models import Purchase
+
+from ims_inventory.forms import NewPurchaseForm
+
 
 def purchase_list(request):
     context = {}
@@ -8,5 +12,10 @@ def purchase_list(request):
 
 
 def purchase_add(request):
-    context = {}
+    form = NewPurchaseForm()
+
+    context = {
+        'form': form,
+    }
+
     return render(request, 'purchase_add.html', context)

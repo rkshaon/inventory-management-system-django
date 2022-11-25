@@ -3,25 +3,21 @@
 {% include 'base.html' %}
 
 {% block body %}
-<h2>Add Supplier</h2>
+<h2>Add Purchase</h2>
 <a class="btn btn-primary" href="{% url 'purchase_list' %}">Show List</a>
 <form method="post" action="" role="form" enctype="multipart/form-data">
     {% csrf_token %}
     <div class="form-group">
-        <label for="name">Name</label>
-        {{ form.name }}
+        <label for="product">Product</label>
+        {{ form.product }}
     </div>
     <div class="form-group">
-        <label for="address">Address</label>
-        {{ form.address }}
+        <label for="supplier">Supplier</label>
+        {{ form.supplier }}
     </div>
     <div class="form-group">
-        <label for="email">E-mail</label>
-        {{ form.email }}
-    </div>
-    <div class="form-group">
-        <label for="cell">Cell</label>
-        {{ form.cell }}
+        <label for="quantity">Qauntity</label>
+        {{ form.quantity }}
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
