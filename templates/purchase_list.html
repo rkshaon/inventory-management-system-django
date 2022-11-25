@@ -9,21 +9,21 @@
 <table class="table table-condensed">
     <thead>
         <tr>
-            <th>Name</th>
-            <th>Category</th>
-            <th>Image</th>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Supplier</th>
             <th>Action</th>
         </tr>        
     </thead>
     <tbody>
-        <!-- {% for product in products %}
+        {% for purchase in purchases %}
         <tr>
-            <td>{{ product.name }}</td>
-            <td>{{ product.category }}</td>
-            <td><img src="{{ product.image }}" alt="{{ product.name }}"></td>
+            <td>{{ purchase.product }}</td>
+            <td>{{ purchase.quantity }}</td>
+            <td>{{ purchase.supplier }}</td>
             <td><button type="button" class="btn btn-danger">Delete</button></td>
         </tr>
-        {% endfor %} -->
+        {% endfor %}
     </tbody>
 </table>
 {% endblock %}

@@ -8,7 +8,11 @@ from ims_inventory.forms import NewPurchaseForm
 
 
 def purchase_list(request):
-    context = {}
+    purchases = Purchase.objects.all()
+
+    context = {
+        'purchases': purchases,
+    }
 
     return render(request, 'purchase_list.html', context)
 
@@ -28,7 +32,7 @@ def purchase_add(request):
                 product=product)
             
             return redirect('purchase_list')
-            
+
     form = NewPurchaseForm()
 
     context = {
