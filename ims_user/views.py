@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 
 from django.contrib.auth.models import User
 from ims_user.models import Supplier
@@ -17,10 +18,8 @@ def user_login(request):
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
-
-        print(username, password)
+        
         user = authenticate(request, username=username, password=password)
-        print(user)
 
         if user is not None:
             login(request, user)
@@ -34,6 +33,7 @@ def user_login(request):
     return render(request, 'login.html', context)
 
 
+@login_required(login_url='login')
 def supplier_list(request):
     suppliers = Supplier.objects.all()
 
@@ -44,6 +44,7 @@ def supplier_list(request):
     return render(request, 'supplier_list.html', context)
 
 
+@login_required(login_url='login')
 def supplier_add(request):
     if request.method == 'POST':
         form = NewSupplierForm(request.POST)
@@ -70,6 +71,7 @@ def supplier_add(request):
     return render(request, 'supplier_add.html', context)
 
 
+@login_required(login_url='login')
 def customer_list(request):
     customers = Customer.objects.all()
 
@@ -80,6 +82,7 @@ def customer_list(request):
     return render(request, 'customer_list.html', context)
 
 
+@login_required(login_url='login')
 def customer_add(request):
     if request.method == 'POST':
         form = NewSupplierForm(request.POST)

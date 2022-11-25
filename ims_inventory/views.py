@@ -45,7 +45,8 @@ def index(request):
     
     return render(request, 'index.html', context)
 
-    
+
+@login_required(login_url='login')   
 def purchase_list(request):
     purchases = Purchase.objects.all().order_by('-id')
 
@@ -56,6 +57,7 @@ def purchase_list(request):
     return render(request, 'purchase_list.html', context)
 
 
+@login_required(login_url='login')
 def purchase_add(request):
     if request.method == 'POST':
         form = NewPurchaseForm(request.POST)
@@ -89,6 +91,7 @@ def purchase_add(request):
     return render(request, 'purchase_add.html', context)
 
 
+@login_required(login_url='login')
 def sale_list(request):
     sales = Sale.objects.all().order_by('-id')
 
@@ -99,6 +102,7 @@ def sale_list(request):
     return render(request, 'sale_list.html', context)
 
 
+@login_required(login_url='login')
 def sale_add(request):
     if request.method == 'POST':
         form = NewSaleForm(request.POST)
