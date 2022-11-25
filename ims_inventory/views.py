@@ -40,3 +40,13 @@ def purchase_add(request):
     }
 
     return render(request, 'purchase_add.html', context)
+
+
+def sale_list(request):
+    purchases = Purchase.objects.all()
+
+    context = {
+        'purchases': purchases,
+    }
+
+    return render(request, 'sale_list.html', context)

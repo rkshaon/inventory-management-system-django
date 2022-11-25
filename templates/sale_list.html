@@ -1,0 +1,29 @@
+{% load static %}
+
+{% include 'base.html' %}
+
+{% block body %}
+<h2>Sale</h2>
+<a class="btn btn-primary" href="{% url 'supplier_list' %}">Customer List (+)</a>
+<a class="btn btn-primary" href="{% url 'purchase_add' %}">Add (+)</a>
+<table class="table table-condensed">
+    <thead>
+        <tr>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Supplier</th>
+            <th>Action</th>
+        </tr>        
+    </thead>
+    <tbody>
+        {% for purchase in purchases %}
+        <tr>
+            <td>{{ purchase.product }}</td>
+            <td>{{ purchase.quantity }}</td>
+            <td>{{ purchase.supplier }}</td>
+            <td><button type="button" class="btn btn-danger">Delete</button></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
