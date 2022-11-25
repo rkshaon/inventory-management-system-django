@@ -52,6 +52,20 @@ def customer_list(request):
 
 
 def customer_add(request):
+    if request.method == 'POST':
+        form = NewSupplierForm(request.POST)
+
+        if form.is_valid():
+            name = request.POST.get('name')
+            address = request.POST.get('address')
+            email = request.POST.get('email')
+            cell = request.POST.get('cell')
+
+            c, created = Customer.objects.get_or_create(
+                name=name, address=address, email=email, cell=cell)
+            
+            return redirect('customer_list')
+
     form = NewCustomerForm()
 
     context = {
