@@ -53,10 +53,10 @@ def purchase_add(request):
 
 
 def sale_list(request):
-    purchases = Purchase.objects.all()
+    sales = Sale.objects.all().order_by('-id')
 
     context = {
-        'purchases': purchases,
+        'sales': sales,
     }
 
     return render(request, 'sale_list.html', context)

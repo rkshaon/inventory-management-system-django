@@ -5,6 +5,7 @@
 {% block body %}
 <h2>Add Sale</h2>
 <a class="btn btn-primary" href="{% url 'sale_list' %}">Show List</a>
+<a class="btn btn-primary" href="{% url 'customer_add' %}">Customer Add (+)</a>
 <form method="post" action="" role="form" enctype="multipart/form-data">
     {% csrf_token %}
     <div class="form-group">

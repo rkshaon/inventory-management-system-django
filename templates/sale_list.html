@@ -9,19 +9,17 @@
 <table class="table table-condensed">
     <thead>
         <tr>
+            <th>Customer</th>
             <th>Product</th>
-            <th>Quantity</th>
-            <th>Supplier</th>
-            <th>Action</th>
+            <th>Quantity</th>            
         </tr>        
     </thead>
     <tbody>
-        {% for purchase in purchases %}
+        {% for sale in sales %}
         <tr>
-            <td>{{ purchase.product }}</td>
-            <td>{{ purchase.quantity }}</td>
-            <td>{{ purchase.supplier }}</td>
-            <td><button type="button" class="btn btn-danger">Delete</button></td>
+            <td>{{ sale.customer }}</td>
+            <td>{{ sale.quantity }}</td>
+            <td>{{ sale.inventory.product.name }}</td>
         </tr>
         {% endfor %}
     </tbody>
