@@ -1,7 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from ims_product.models import Category
 from ims_product.models import Product
+
+from ims_product.forms import NewCategoryForm
 
 
 def category_list(request):
@@ -12,6 +14,27 @@ def category_list(request):
     }
 
     return render(request, 'category_list.html', context)
+
+
+def category_add(request):
+    if request.method == 'POST':
+        form = NewCategoryForm(request.POST, request.FILES)
+
+        if form.is_valid():
+            image = request.FILES.get('image')
+            name = request.POST.get('name')
+            
+            c, created = Category.objects.get_or_create(name=name, image=image)
+        
+        return redirect('category_list')
+
+    form = NewCategoryForm()
+    
+    context = {
+        'form': form,
+    }
+
+    return render(request, 'category_add.html', context)
 
 
 def product_list(request):

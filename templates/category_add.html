@@ -1,0 +1,22 @@
+{% load static %}
+
+{% include 'base.html' %}
+
+{% block body %}
+<h2>Add Category</h2>
+<a class="btn btn-primary" href="{% url 'category_list' %}">Show List</a>
+<form method="post" action="" role="form" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="name">Name</label>
+        <!-- <input type="name" class="form-control" placeholder="Enter cateogory name" id="name"> -->
+        {{ form.name }}
+    </div>
+    <div class="form-group">
+        <label for="image">Image</label>
+        <!-- <input type="file" class="form-control" placeholder="Enter password" id="image"> -->
+        {{ form.image }}
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{% endblock %}
