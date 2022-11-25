@@ -4,6 +4,7 @@ from ims_product.models import Category
 from ims_product.models import Product
 
 from ims_product.forms import NewCategoryForm
+from ims_product.forms import NewProductForm
 
 
 def category_list(request):
@@ -45,3 +46,13 @@ def product_list(request):
     }
 
     return render(request, 'product_list.html', context)
+
+
+def product_add(request):
+    form = NewProductForm()
+    
+    context = {
+        'form': form,
+    }
+
+    return render(request, 'product_add.html', context)
