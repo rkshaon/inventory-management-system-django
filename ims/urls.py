@@ -17,10 +17,12 @@ from django.contrib import admin
 from django.urls import path, include
 
 from ims_inventory import views as inventory_view
+from ims_user import views as user_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', inventory_view.index, name='index'),
+    path('login', user_view.user_login, name='login'),
     path('product/', include('ims_product.urls')),
     path('inventory/', include('ims_inventory.urls')),
     path('user/', include('ims_user.urls')),

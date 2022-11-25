@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.db.models import Sum
 
@@ -16,6 +17,7 @@ from ims_inventory.forms import NewPurchaseForm
 from ims_inventory.forms import NewSaleForm
 
 
+@login_required(login_url='login')
 def index(request):
     inventories = Inventory.objects.all().order_by('-quantity')
     total_inventory_products_count = Inventory.objects.all().aggregate(Sum('quantity'))

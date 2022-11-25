@@ -4,8 +4,6 @@
 <html>
     <head>
         <title>I M S</title>
-        <!-- <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}" />
-        <link rel="stylesheet" href="{% static 'css/style.css' %}"> -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -16,17 +14,18 @@
                 <div class="navbar-header">
                     <a class="navbar-brand" href="{% url 'index' %}">Inventory Management System</a>
                 </div>
-                <ul class="nav navbar-nav">
-                    <!-- <li class="active"><a href="{% url 'index' %}">Inventory</a></li> -->
-                    <li><a href="{% url 'category_list' %}">Category</a></li>
-                    <li><a href="{% url 'product_list' %}">Product</a></li>
-                    <li><a href="{% url 'purchase_list' %}">Purchase</a></li>
-                    <li><a href="{% url 'sale_list' %}">Sale</a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                    <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                </ul>
+                {% if user.is_authenticated %}
+                    <ul class="nav navbar-nav">
+                        <li><a href="{% url 'category_list' %}">Category</a></li>
+                        <li><a href="{% url 'product_list' %}">Product</a></li>
+                        <li><a href="{% url 'purchase_list' %}">Purchase</a></li>
+                        <li><a href="{% url 'sale_list' %}">Sale</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                    </ul>
+                {% endif %}                
             </div>
         </nav>
         {% if messages %}

@@ -1,11 +1,37 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from django.contrib.auth import authenticate, login, logout
 
+from django.contrib.auth.models import User
 from ims_user.models import Supplier
 from ims_user.models import Customer
 
 from ims_user.forms import NewSupplierForm
 from ims_user.forms import NewCustomerForm
+
+
+def user_login(request):
+    if request.user.is_authenticated:
+        return redirect('index')
+    
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        print(username, password)
+        user = authenticate(request, username=username, password=password)
+        print(user)
+
+        if user is not None:
+            login(request, user)
+            messages.info(request, 'Successfully logged in, congrats!')
+            return redirect('index')
+        else:
+            messages.info(request, 'Username OR password is incorrect')
+
+    context = {}
+
+    return render(request, 'login.html', context)
 
 
 def supplier_list(request):
