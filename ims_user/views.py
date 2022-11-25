@@ -9,5 +9,11 @@ def supplier_list(request):
     context = {
         'suppliers': suppliers,
     }
-    
+
     return render(request, 'supplier_list.html', context)
+
+
+def supplier_add(request):
+    context = {}
+
+    return render(request, 'supplier_add.html', context)

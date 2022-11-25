@@ -1,0 +1,24 @@
+{% load static %}
+
+{% include 'base.html' %}
+
+{% block body %}
+<h2>Add Supplier</h2>
+<a class="btn btn-primary" href="{% url 'supplier_list' %}">Show List</a>
+<form method="post" action="" role="form" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="name">Name</label>
+        {{ form.name }}
+    </div>
+    <div class="form-group">
+        <label for="image">Image</label>
+        {{ form.image }}
+    </div>
+    <div class="form-group">
+        <label for="category">Category</label>
+        {{ form.category }}
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{% endblock %}
