@@ -12,6 +12,7 @@
             <th>Product</th>
             <th>Quantity</th>
             <th>Supplier</th>
+            <th>Date</th>
         </tr>        
     </thead>
     <tbody>
@@ -20,6 +21,7 @@
             <td>{{ purchase.product }}</td>
             <td>{{ purchase.quantity }}</td>
             <td>{{ purchase.supplier }}</td>
+            <td>{{ purchase.added_date_time }}</td>
         </tr>
         {% endfor %}
     </tbody>

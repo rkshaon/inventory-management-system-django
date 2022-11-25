@@ -53,4 +53,48 @@
         {% endfor %}
     </tbody>
 </table>
+<h2>Purchased last 7 days</h2>
+<a class="btn btn-primary" href="{% url 'purchase_list' %}">View All Purchases (+)</a>
+<table class="table table-condensed">
+    <thead>
+        <tr>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Supplier</th>
+            <th>Date</th>
+        </tr>        
+    </thead>
+    <tbody>
+        {% for purchase in purchases %}
+        <tr>
+            <td>{{ purchase.product }}</td>
+            <td>{{ purchase.quantity }}</td>
+            <td>{{ purchase.supplier }}</td>
+            <td>{{ purchase.added_date_time }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<h2>Sale last 7 days</h2>
+<a class="btn btn-primary" href="{% url 'sale_list' %}">View All Sales (+)</a>
+<table class="table table-condensed">
+    <thead>
+        <tr>
+            <th>Customer</th>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Date</th>
+        </tr>        
+    </thead>
+    <tbody>
+        {% for sale in sales %}
+        <tr>
+            <td>{{ sale.customer }}</td>
+            <td>{{ sale.quantity }}</td>
+            <td>{{ sale.inventory.product.name }}</td>
+            <td>{{ sale.added_date_time }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
 {% endblock %}

@@ -24,6 +24,8 @@ def index(request):
     total_suppliers = Supplier.objects.filter(is_deleted=False).count()
     customers = Customer.objects.filter(is_deleted=False, added_date_time__gte=datetime.datetime.now()-datetime.timedelta(days=7))
     suppliers = Supplier.objects.filter(is_deleted=False, added_date_time__gte=datetime.datetime.now()-datetime.timedelta(days=7))
+    purchases = Purchase.objects.filter(added_date_time__gte=datetime.datetime.now()-datetime.timedelta(days=7))
+    sales = Sale.objects.filter(added_date_time__gte=datetime.datetime.now()-datetime.timedelta(days=7))
 
     context = {
         'inventories': inventories,
@@ -34,6 +36,8 @@ def index(request):
         'total_suppliers': total_suppliers,
         'customers': customers,
         'suppliers': suppliers,
+        'purchases': purchases,
+        'sales': sales,
     }
     
     return render(request, 'index.html', context)

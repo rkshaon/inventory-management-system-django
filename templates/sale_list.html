@@ -11,7 +11,8 @@
         <tr>
             <th>Customer</th>
             <th>Product</th>
-            <th>Quantity</th>            
+            <th>Quantity</th>
+            <th>Date</th>
         </tr>        
     </thead>
     <tbody>
@@ -20,6 +21,7 @@
             <td>{{ sale.customer }}</td>
             <td>{{ sale.quantity }}</td>
             <td>{{ sale.inventory.product.name }}</td>
+            <td>{{ sale.added_date_time }}</td>
         </tr>
         {% endfor %}
     </tbody>
