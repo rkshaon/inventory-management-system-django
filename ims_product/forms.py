@@ -24,9 +24,6 @@ class NewProductForm(forms.ModelForm):
         }), required=True)
     image = forms.FileField(widget=forms.ClearableFileInput(attrs={'class': 'form-control'}), required=False)
     category = forms.ModelChoiceField(queryset=Category.objects.all())
-    # category = forms.
-    # image = models.ImageField(upload_to='product', null=True, blank=True)
-    # category
 
     class Meta:
         model = Product
