@@ -2,11 +2,13 @@ from django.shortcuts import render, redirect
 
 from ims_product.models import Product
 from ims_user.models import Supplier
+from ims_user.models import Customer
 from ims_inventory.models import Inventory
 from ims_inventory.models import Purchase
+# from ims_inventory.models import Sale
 
 from ims_inventory.forms import NewPurchaseForm
-from ims_inventory.forms import NewSaleForm
+# from ims_inventory.forms import NewSaleForm
 
 
 def purchase_list(request):
@@ -60,11 +62,26 @@ def sale_list(request):
     return render(request, 'sale_list.html', context)
 
 
-def sale_add(request):
-    form = NewSaleForm()
+# def sale_add(request):
+#     if request.method == 'POST':
+#         form = NewSaleForm(request.POST)
 
-    context = {
-        'form': form,
-    }
+#         if form.is_valid():
+#             customer = Customer.objects.get(id=request.POST.get('customer'))
+#             inventory = Inventory.objects.get(id=request.POST.get('inventory'))
+#             quantity = request.POST.get('quantity')
 
-    return render(request, 'sale_add.html', context)
+#             sale = Sale.objects.create(customer=customer, inventory=inventory, quantity=quantity)
+
+#             inventory.quantity = inventory.quantity - float(quantity)
+#             inventory.save()
+
+#             return redirect('sale_list')
+
+#     form = NewSaleForm()
+
+#     context = {
+#         'form': form,
+#     }
+
+#     return render(request, 'sale_add.html', context)
