@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'ims_home',
     'ims_product',
+    'ims_user',
 ]
 
 MIDDLEWARE = [
