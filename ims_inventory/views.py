@@ -1,3 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
-# Create your views here.
+
+def purchase_list(reqeust):
+    context = {}
+
+    return render(reqeust, 'purchase_list.html', context)

@@ -1,3 +1,6 @@
 from django.shortcuts import render
 
-# Create your views here.
+
+def supplier_list(request):
+    context = {}
+    return

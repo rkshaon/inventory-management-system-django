@@ -20,4 +20,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('ims_home.urls')),
     path('product/', include('ims_product.urls')),
+    path('inventory/', include('ims_inventory.urls')),
 ]

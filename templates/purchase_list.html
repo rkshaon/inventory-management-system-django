@@ -1,0 +1,29 @@
+{% load static %}
+
+{% include 'base.html' %}
+
+{% block body %}
+<h2>Purchase</h2>
+<a class="btn btn-primary" href="{% url 'product_add' %}">Supplier List (+)</a>
+<a class="btn btn-primary" href="{% url 'product_add' %}">Add (+)</a>
+<table class="table table-condensed">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Image</th>
+            <th>Action</th>
+        </tr>        
+    </thead>
+    <tbody>
+        <!-- {% for product in products %}
+        <tr>
+            <td>{{ product.name }}</td>
+            <td>{{ product.category }}</td>
+            <td><img src="{{ product.image }}" alt="{{ product.name }}"></td>
+            <td><button type="button" class="btn btn-danger">Delete</button></td>
+        </tr>
+        {% endfor %} -->
+    </tbody>
+</table>
+{% endblock %}
