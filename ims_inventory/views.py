@@ -11,6 +11,12 @@ from ims_inventory.forms import NewPurchaseForm
 from ims_inventory.forms import NewSaleForm
 
 
+def index(request):
+    context = {}
+    
+    return render(request, 'index.html', context)
+
+    
 def purchase_list(request):
     purchases = Purchase.objects.all().order_by('-id')
 
