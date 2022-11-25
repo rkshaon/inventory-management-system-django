@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'ims_home',
     'ims_product',
     'ims_user',
+    'ims_inventory',
 ]
 
 MIDDLEWARE = [
