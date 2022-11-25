@@ -1,8 +1,10 @@
 from django.shortcuts import render, redirect
 
 from ims_user.models import Supplier
+from ims_user.models import Customer
 
 from ims_user.forms import NewSupplierForm
+from ims_user.forms import NewCustomerForm
 
 
 def supplier_list(request):
@@ -37,3 +39,13 @@ def supplier_add(request):
     }
 
     return render(request, 'supplier_add.html', context)
+
+
+def customer_list(request):
+    customers = Customer.objects.all()
+
+    context = {
+        'customers': customers,
+    }
+
+    return render(request, 'customer_list.html', context)

@@ -1,0 +1,30 @@
+{% load static %}
+
+{% include 'base.html' %}
+
+{% block body %}
+<h2>Supplier</h2>
+<a class="btn btn-primary" href="{% url 'supplier_add' %}">Add (+)</a>
+<table class="table table-condensed">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Address</th>
+            <th>E-mail</th>
+            <th>Cell No</th>
+            <th>Action</th>
+        </tr>        
+    </thead>
+    <tbody>
+        {% for customer in customers %}
+        <tr>
+            <td>{{ customer.name }}</td>
+            <td>{{ customer.address }}</td>
+            <td>{{ customer.email }}</td>
+            <td>{{ customer.cell }}</td>
+            <td><button type="button" class="btn btn-danger">Delete</button></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

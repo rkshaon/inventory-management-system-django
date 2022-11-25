@@ -28,7 +28,7 @@ class NewSupplierForm(forms.ModelForm):
         fields = {'name', 'address', 'email', 'cell'}
 
 
-class NewSupplierForm(forms.ModelForm):
+class NewCustomerForm(forms.ModelForm):
     name = forms.CharField(widget=forms.TextInput(attrs={
         'class': 'form-control',
         'placeholder': 'Enter supplier name',
@@ -50,4 +50,3 @@ class NewSupplierForm(forms.ModelForm):
     class Meta:
         model = Customer
         fields = {'name', 'address', 'email', 'cell'}
-        
