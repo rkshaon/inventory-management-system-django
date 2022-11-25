@@ -18,10 +18,10 @@ class NewCategoryForm(forms.ModelForm):
 
 
 class NewProductForm(forms.ModelForm):
-    name = forms.CharField(widget=forms.TextInput(
+    name = forms.CharField(widget=forms.TextInput(attrs={
         'class': 'form-control',
         'placeholder': 'Enter product name',
-    ), required=True)
+        }), required=True)
     image = forms.FileField(widget=forms.ClearableFileInput(attrs={'class': 'form-control'}), required=False)
     # category = forms.
     # image = models.ImageField(upload_to='product', null=True, blank=True)
