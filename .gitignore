@@ -1,5 +1,6 @@
 /env
 
+ims/__pycache__
 ims_inventory/migrations/
 ims_inventory/__pycache__
 ims_product/migrations/
