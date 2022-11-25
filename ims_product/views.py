@@ -8,7 +8,7 @@ from ims_product.forms import NewProductForm
 
 
 def category_list(request):
-    categories = Category.objects.all().order_by('name')
+    categories = Category.objects.filter(is_deleted=False).order_by('name')
 
     context = {
         'categories': categories,
@@ -36,6 +36,15 @@ def category_add(request):
     }
 
     return render(request, 'category_add.html', context)
+
+
+def category_delete(request, pk):
+    category = Category.objects.get(id=pk)
+    category.is_deleted = True
+
+    category.save()
+
+    return redirect('category_list')
 
 
 def product_list(request):
