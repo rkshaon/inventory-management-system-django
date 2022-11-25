@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 
 from ims_product.models import Product
 from ims_user.models import Supplier
+from ims_inventory.models import Inventory
 from ims_inventory.models import Purchase
 
 from ims_inventory.forms import NewPurchaseForm
@@ -30,6 +31,13 @@ def purchase_add(request):
                 quantity=quantity,
                 supplier=supplier,
                 product=product)
+            
+            print('\n')
+            print('**************')
+            print(p)
+            print(created)
+            print('**************')
+            print('\n')
             
             return redirect('purchase_list')
 
