@@ -9,7 +9,7 @@ from ims_inventory.forms import NewPurchaseForm
 
 
 def purchase_list(request):
-    purchases = Purchase.objects.all()
+    purchases = Purchase.objects.all().order_by('-id')
 
     context = {
         'purchases': purchases,
@@ -27,10 +27,6 @@ def purchase_add(request):
             supplier = Supplier.objects.get(id=request.POST.get('supplier'))
             product = Product.objects.get(id=request.POST.get('product'))
 
-            # p, created = Purchase.objects.get_or_create(
-            #     quantity=quantity,
-            #     supplier=supplier,
-            #     product=product)
             purchase = Purchase.objects.create(
                 quantity=quantity, supplier=supplier, product=product
             )
@@ -41,14 +37,6 @@ def purchase_add(request):
 
             inventory.quantity = inventory.quantity + float(quantity)
             inventory.save()
-            
-            print('\n')
-            print('**************')
-            # print(p)
-            # print(created)
-            print(purchase)
-            print('**************')
-            print('\n')
             
             return redirect('purchase_list')
 

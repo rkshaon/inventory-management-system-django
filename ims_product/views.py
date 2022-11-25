@@ -8,7 +8,7 @@ from ims_product.forms import NewProductForm
 
 
 def category_list(request):
-    categories = Category.objects.all()
+    categories = Category.objects.all().order_by('name')
 
     context = {
         'categories': categories,
@@ -25,7 +25,7 @@ def category_add(request):
             image = request.FILES.get('image')
             name = request.POST.get('name')
             
-            c, created = Category.objects.get_or_create(name=name, image=image)
+            c, created = Category.objects.create(name=name, image=image)
         
             return redirect('category_list')
 
@@ -39,7 +39,7 @@ def category_add(request):
 
 
 def product_list(request):
-    products = Product.objects.all()
+    products = Product.objects.all().order_by('category__name')
 
     context = {
         'products': products,
@@ -57,7 +57,7 @@ def product_add(request):
             image = request.FILES.get('image')
             category = Category.objects.get(id=request.POST.get('category'))
             
-            p, created = Product.objects.get_or_create(name=name, image=image, category=category)
+            p, created = Product.objects.create(name=name, image=image, category=category)
 
             return redirect('product_list')
 
