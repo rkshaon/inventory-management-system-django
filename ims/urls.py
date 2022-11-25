@@ -16,6 +16,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+from django.conf import settings
+from django.conf.urls.static import static
+
 from ims_inventory import views as inventory_view
 from ims_user import views as user_view
 
@@ -27,4 +30,4 @@ urlpatterns = [
     path('product/', include('ims_product.urls')),
     path('inventory/', include('ims_inventory.urls')),
     path('user/', include('ims_user.urls')),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

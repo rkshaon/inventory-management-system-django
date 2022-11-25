@@ -18,7 +18,7 @@
         <tr>
             <td>{{ category.name }}</td>
             <td>
-                <img src="media/{{ category.image }}" alt="{{ category.name }}">
+                <img src="http://127.0.0.1:8000/media/{{ category.image }}" alt="{{ category.name }}" height="75">
             </td>
             <td><a type="button" class="btn btn-danger" href="{% url 'category_delete' category.id %}">Delete</a></td>
         </tr>

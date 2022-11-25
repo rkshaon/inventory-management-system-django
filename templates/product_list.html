@@ -19,7 +19,9 @@
         <tr>
             <td>{{ product.name }}</td>
             <td>{{ product.category }}</td>
-            <td><img src="{{ product.image }}" alt="{{ product.name }}"></td>
+            <td>
+                <img src="http://127.0.0.1:8000/media/{{ product.image }}" alt="{{ product.name }}" height="75">
+            </td>
             <td><a type="button" class="btn btn-danger" href="{% url 'product_delete' product.id %}">Delete</a></td>
         </tr>
         {% endfor %}
