@@ -3,5 +3,10 @@
 {% include 'base.html' %}
 
 {% block body %}
-Here will be the reports!
+<div class="jumbotron">
+    <h2>Products in stock now <i>{{total_inventory_products_count}} pcs</i> now.</h2>
+    <h4>Available <i>{{ total_products }}</i> products in <i>{{ total_categories }}</i> categories.</h4>
+    <h3>Current customer <i>{{ total_customers }} persons</i>.</h3>
+    <h3>Current supplier <i>{{ total_suppliers }} persons</i>.</h3>
+</div>
 {% endblock %}

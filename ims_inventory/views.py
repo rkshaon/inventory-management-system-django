@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
+from django.db.models import Sum
 
+from ims_product.models import Category
 from ims_product.models import Product
 from ims_user.models import Supplier
 from ims_user.models import Customer
@@ -12,7 +14,21 @@ from ims_inventory.forms import NewSaleForm
 
 
 def index(request):
-    context = {}
+    inventories = Inventory.objects.all().order_by('-quantity')
+    total_inventory_products_count = Inventory.objects.all().aggregate(Sum('quantity'))
+    total_categories = Category.objects.filter(is_deleted=False).count()
+    total_products = Product.objects.filter(is_deleted=False).count()
+    total_customers = Customer.objects.filter(is_deleted=False).count()
+    total_suppliers = Supplier.objects.filter(is_deleted=False).count()
+
+    context = {
+        'inventories': inventories,
+        'total_inventory_products_count': total_inventory_products_count['quantity__sum'],
+        'total_categories': total_categories,
+        'total_products': total_products,
+        'total_customers': total_customers,
+        'total_suppliers': total_suppliers,
+    }
     
     return render(request, 'index.html', context)
 
