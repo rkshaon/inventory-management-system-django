@@ -10,20 +10,13 @@ class NewPurchaseForm(forms.ModelForm):
         'class': 'form-control',
         'placeholder': 'Enter quantity of the product',
     }), required=True)
-    # product = forms.ChoiceField(widget=forms.Select(attrs={
-        
-    # }), required=True)
     product = forms.ModelChoiceField(queryset=Product.objects.all(), widget=forms.Select(attrs={
         'class': 'form-control',
     }), required=True)
     supplier = forms.ModelChoiceField(queryset=Supplier.objects.all(), widget=forms.Select(attrs={
         'class': 'form-control',
     }), required=True)
-
-    # category = forms.ModelChoiceField(queryset=Category.objects.all(), widget=forms.Select(attrs={
-    #     'class': 'form-control',
-    # }), required=True)
-
+    
     class Meta:
         model = Purchase
         fields = {'quantity', 'product'}
