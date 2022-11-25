@@ -23,7 +23,7 @@ class NewProductForm(forms.ModelForm):
         'placeholder': 'Enter product name',
         }), required=True)
     image = forms.FileField(widget=forms.ClearableFileInput(attrs={'class': 'form-control'}), required=False)
-    category = forms.ModelChoiceField(queryset=Category.objects.all(), widget=forms.Select(attrs={
+    category = forms.ModelChoiceField(queryset=Category.objects.filter(is_deleted=False), widget=forms.Select(attrs={
         'class': 'form-control',
     }), required=True)
 

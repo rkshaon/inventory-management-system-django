@@ -25,7 +25,7 @@ def category_add(request):
             image = request.FILES.get('image')
             name = request.POST.get('name')
             
-            c, created = Category.objects.create(name=name, image=image)
+            category = Category.objects.create(name=name, image=image)
         
             return redirect('category_list')
 
@@ -48,7 +48,7 @@ def category_delete(request, pk):
 
 
 def product_list(request):
-    products = Product.objects.all().order_by('category__name')
+    products = Product.objects.filter(is_deleted=False).order_by('category__name')
 
     context = {
         'products': products,
@@ -66,7 +66,7 @@ def product_add(request):
             image = request.FILES.get('image')
             category = Category.objects.get(id=request.POST.get('category'))
             
-            p, created = Product.objects.create(name=name, image=image, category=category)
+            product = Product.objects.create(name=name, image=image, category=category)
 
             return redirect('product_list')
 
@@ -77,3 +77,11 @@ def product_add(request):
     }
 
     return render(request, 'product_add.html', context)
+
+
+def product_delete(request, pk):
+    product = Product.objects.get(id=pk)
+    product.is_deleted = True
+    product.save()
+
+    return redirect('product_list')

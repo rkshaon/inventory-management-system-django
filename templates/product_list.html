@@ -20,7 +20,7 @@
             <td>{{ product.name }}</td>
             <td>{{ product.category }}</td>
             <td><img src="{{ product.image }}" alt="{{ product.name }}"></td>
-            <td><button type="button" class="btn btn-danger">Delete</button></td>
+            <td><a type="button" class="btn btn-danger" href="{% url 'product_delete' product.id %}">Delete</a></td>
         </tr>
         {% endfor %}
     </tbody>
