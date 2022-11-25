@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.contrib import messages
 from django.db.models import Sum
 
 import datetime
@@ -72,6 +73,8 @@ def purchase_add(request):
 
             inventory.quantity = inventory.quantity + float(quantity)
             inventory.save()
+
+            messages.info(request, 'Product purchase added successfully!')
             
             return redirect('purchase_list')
 
@@ -107,6 +110,8 @@ def sale_add(request):
 
             inventory.quantity = inventory.quantity - float(quantity)
             inventory.save()
+
+            messages.info(request, 'Product sale added successfully!')
 
             return redirect('sale_list')
 

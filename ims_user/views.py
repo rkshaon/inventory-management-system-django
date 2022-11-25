@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.contrib import messages
 
 from ims_user.models import Supplier
 from ims_user.models import Customer
@@ -29,6 +30,8 @@ def supplier_add(request):
 
             s, created = Supplier.objects.get_or_create(
                 name=name, address=address, email=email, cell=cell)
+            
+            messages.info(request, 'Supplier added successfully!')
             
             return redirect('supplier_list')
 
@@ -63,6 +66,8 @@ def customer_add(request):
 
             c, created = Customer.objects.get_or_create(
                 name=name, address=address, email=email, cell=cell)
+            
+            messages.info(request, 'Customer added successfully!')
             
             return redirect('customer_list')
 

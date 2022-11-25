@@ -71,6 +71,8 @@ def product_add(request):
             
             product = Product.objects.create(name=name, image=image, category=category)
 
+            messages.info(request, 'Product added successfully!')
+
             return redirect('product_list')
 
     form = NewProductForm()
