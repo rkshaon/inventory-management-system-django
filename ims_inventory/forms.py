@@ -13,7 +13,7 @@ class NewPurchaseForm(forms.ModelForm):
         'class': 'form-control',
         'placeholder': 'Enter quantity of the product',
     }), required=True)
-    product = forms.ModelChoiceField(queryset=Product.objects.all(), widget=forms.Select(attrs={
+    product = forms.ModelChoiceField(queryset=Product.objects.filter(is_deleted=False), widget=forms.Select(attrs={
         'class': 'form-control',
     }), required=True)
     supplier = forms.ModelChoiceField(queryset=Supplier.objects.all(), widget=forms.Select(attrs={
