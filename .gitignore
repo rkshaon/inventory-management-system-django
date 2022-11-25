@@ -1,1 +1,5 @@
 /env
+
+ims_inventory/migrations/
+ims_product/migrations/
+ims_user/migrations/
